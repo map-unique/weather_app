@@ -28,9 +28,12 @@ class _HomePageState extends State<HomePage> {
   _fetchWeather(String city) async {
     try {
       final weather = await _weatherService.getWeather(city);
+      print("weather1 : $weather");
       setState(() {
         _weather = weather;
+
       });
+      print("weather2 : $_weather");
     } catch (e) {
       print(e);
     }
@@ -38,6 +41,7 @@ class _HomePageState extends State<HomePage> {
 
   _fetchInitialWeather() async {
     String currentCity = await _weatherService.getCurrentCity();
+    print(" c city: $currentCity");
     _fetchWeather(currentCity);
   }
 
@@ -106,7 +110,7 @@ class _HomePageState extends State<HomePage> {
                         style: const TextStyle(color: Colors.white),
                         decoration: const InputDecoration(
                             border: InputBorder.none,
-                            icon: Icon(Icons.search, color: Colors.white54),
+                            icon: Icon(Icons.search, color: Colors.white54, ),
                             hintText: 'Search...',
                             hintStyle: TextStyle(color: Colors.white54)),
                       ),
@@ -117,6 +121,7 @@ class _HomePageState extends State<HomePage> {
                       child: const Icon(
                         Icons.edit_location_alt_outlined,
                         size: 40,
+                        color: Colors.white70,
                       ),
                     )
                   ],

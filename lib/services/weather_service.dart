@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
@@ -22,7 +23,7 @@ class WeatherService {
 
     final response = await http.get(uri);
 
-    // print(response.body);
+    // log(response.body);
 
     if (response.statusCode == 200) {
       return Weather.fromJson(jsonDecode(response.body));
@@ -53,7 +54,7 @@ class WeatherService {
 
     String? cityName = placeMarks[0].locality;
 
-    print ("$cityName 2");
+    print ("City name : $cityName");
 
     return cityName ?? "Tehran";
 
